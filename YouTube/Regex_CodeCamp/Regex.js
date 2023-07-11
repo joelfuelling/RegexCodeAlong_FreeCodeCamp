@@ -146,11 +146,11 @@ console.log(resultC);
 
 //* Find Characters with LAZY Matching
 
-// Greedy match (REGEX DEFAULT): Find the LONGEST possible part of a string that matches the regex pattern.
+//* Greedy match (REGEX DEFAULT): Find the LONGEST possible part of a string that matches the regex pattern.
 //* Lazy match ? Find the SMALLEST possible part of the string that matches the pattern
 
 // 1st, looking for t, then, 0 or more of any letters between a-z, and then letter i, so 'titani' is returned
-//% Adding the ? makes 't[a-z]*' a LAZY match, only returning 'i' instead, since 'itani' is the 1st letter found in the [a-z]*? and returned.
+//% Adding the ? makes 't[a-z]*' a LAZY match, only returning 'ti' instead, since 'titani' is the 1st string found in the [a-z]*? and returned.
 let string = "titanic";
 let tiRegex = /t[a-z]*?i/;
 console.log(string.match(tiRegex));

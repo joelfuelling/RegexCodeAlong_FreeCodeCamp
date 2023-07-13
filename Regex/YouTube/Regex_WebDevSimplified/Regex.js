@@ -148,15 +148,16 @@ console.log(numCheck);
 const newNumberWithoutParens = newNumber.replace(newNumReg, "$1$2$3");
 console.log(newNumberWithoutParens);
 
+//! REAL WORLD EXAMPLE
 const intNumber = "+1 (440)-333-5555";
 
-//. ?: sets up the following capture group to be a NON CAPTURING GROUP.
+//. ?: sets up the current capture group to be a NON CAPTURING GROUP.
 //*1 - 1st named grouping, "(?:(?<internationalCode>\+1)[ -])?" ... ?: placed immediately after the ( creates a non capturing group.
-//* We then name the next capture group internationalCode, which matches a LITERAL + then a 1
+//* We then name the next capture group internationalCode, which matches a LITERAL '+' then a 1
 //* Followed by a space or a hyphen.
 //* The entire capture group is optional.
 //% Take away the ?:, and then '1+ ' with the space is stored as group 1, instead of '1+'
-//*2 - Then, a 2nd group "\(?(?<areaCode>\d{3})\)?" ... Matches a LITERAL ( which is optional, names the capture group areaCode, matches exactly 3 digits, matches a LITERAL ) which is optional, followed by a space or a hyphen which is optional
+//*2 - Then, a 2nd group "\(?(?<areaCode>\d{3})\)?" ... Matches a LITERAL '(' which is optional, names the capture group areaCode, matches exactly 3 digits, matches a LITERAL ')' which is optional.
 //*3 - The 3rd and 4th groups are the same as the 2nd, except they don't try to match any parenthesis, and the thirdGrup is looking for exactly 4 digits instead of 3.
 
 const intRegCheck =
@@ -172,3 +173,15 @@ const chlgIntCheck =
   /(?:(\+1)[ -])?[ -]?\(?(\d{3})\)?[ -]?(\d{3})[ -]?(\d{4})/g;
 const chlgResult = newInt.match(chlgIntCheck);
 console.log(chlgResult);
+
+//! ANOTHER REAL WORLD EXAMPLE
+// The presentableUrl uses a destructuring assignment to set default values for the object parameter. If no argument is provided for the object parameter, it will default to an empty object {). removeProtocol defaults to true if not specified. removeWww defaults to true if not specified.
+const presentableUrl = (
+  fullUrl,
+  { removeProtocol = true, removeWww = true } = {}
+) =>
+  fullUrl
+    .replace(/(https?:\/\/)/i, removeProtocol ? "" : "$1")
+    .replace(/(www\.)/i, removeWww ? "" : "$1");
+
+console.log(presentableUrl("https://www.openai.com/gpt-4"));

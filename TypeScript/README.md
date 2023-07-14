@@ -1,0 +1,2 @@
+- This is my initial Init for TypeScript, setting up configurations, tutorials, and general scratchPad area.
+- Using (https://www.youtube.com/watch?v=4zdBk6wisxc&ab_channel=AlexZiskind) to setup debugging via ts files, and to update TSC on save rather than having to do it manually each time.
